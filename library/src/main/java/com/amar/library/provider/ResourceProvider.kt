@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import androidx.annotation.StyleableRes
 import com.amar.library.provider.interfaces.IResourceProvider
 
-internal class ResourceProvider(context: Context, attrs: AttributeSet?, @StyleableRes styleRes: IntArray) :
+internal class ResourceProvider(private val context: Context, private val attrs: AttributeSet?, @StyleableRes private val styleRes: IntArray) :
     IResourceProvider {
     private var mTypeArray: TypedArray = context.obtainStyledAttributes(attrs, styleRes)
 
