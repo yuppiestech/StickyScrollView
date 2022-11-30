@@ -8,13 +8,15 @@ import com.amar.library.provider.interfaces.IResourceProvider
 
 internal class ResourceProvider(context: Context, attrs: AttributeSet?, @StyleableRes styleRes: IntArray) :
     IResourceProvider {
-    private val mTypeArray: TypedArray = context.obtainStyledAttributes(attrs, styleRes)
+    private var mTypeArray: TypedArray = context.obtainStyledAttributes(attrs, styleRes)
+
     override fun getResourceId(@StyleableRes styleResId: Int): Int {
         return mTypeArray.getResourceId(styleResId, 0)
     }
 
     override fun recycle() {
         mTypeArray.recycle()
+        mTypeArray = context.obtainStyledAttributes(attrs, styleRes)
     }
 
 }
